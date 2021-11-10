@@ -12,6 +12,11 @@ const GlobalStyle = createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Playfair Display', serif;
     }
+    h1 {
+    font-size: 72px;
+    line-height: 80px;
+    font-weight: 400;
+    }
 `;
 
 export default GlobalStyle;

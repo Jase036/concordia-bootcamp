@@ -4,6 +4,7 @@ export const StyledHeader = styled.header`
   display: flex;
   padding: 18px 0;
   border-bottom: 1px solid rgba(33, 32, 32, 0.2);
+  width: 100%;
 `;
 
 export const Logo = styled.img`

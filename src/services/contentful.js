@@ -14,6 +14,31 @@ export const getAllArticles = async () => {
   }
 };
 
+//Grab articles based on limit and skip for pagination
+export const getPaginatedArticles = async (limit, skip) => {
+ const PAGINATED_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/6fmuqje9nkz0/environments/master/entries?access_token=yNcU-W6qITUmC18PRtK6Gyy32Vy7oGLRAWzW-2zyUaM&content_type=blog-entry&limit=${limit}&skip=${skip}`;
+  try {
+    const response = await request(GET, PAGINATED_CONTENTFUL_URL);
+
+    return response.items;
+  } catch (e) {
+    console.log("getAllArticles failed:", e);
+  }
+};
+
+//Grab the articles with the feature attribute set to true
+export const getFeaturedArticles = async () => {
+  const FEATURED_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/6fmuqje9nkz0/environments/master/entries?access_token=yNcU-W6qITUmC18PRtK6Gyy32Vy7oGLRAWzW-2zyUaM&content_type=blog-entry&fields.featured=true`;
+  try {
+    const response = await request(GET, FEATURED_CONTENTFUL_URL);
+    
+    return response.items;
+    
+  } catch (e) {
+    console.log("getAllArticles failed:", e);
+  }
+};
+
 // TODO: Using the category argument, update the method below by making a GET
 //       request and returning entries from contentful filtered by the category.
 //       NOTE: this method will need to be connected to ../contexts/Store!
