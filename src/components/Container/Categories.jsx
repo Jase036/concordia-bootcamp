@@ -10,10 +10,11 @@ const Categories = () => {
     
     //Push all the categories in the articles to an array then filter for unique categories.
     let categories= [];
+    
+    //added a replace method to filter out the couple of articles that had an escaped quote at the end.
     articles.map((article) => categories.push(article.fields.category.replace(/"/g, '')));
     let filteredCategoryArray = categories.filter((e, i, s) => s.indexOf(e) === i);
     
-    console.log(filteredCategoryArray)
     
     
     return (

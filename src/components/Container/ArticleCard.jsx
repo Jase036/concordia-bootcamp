@@ -12,7 +12,10 @@ const ArticleCard = ({articleInfo}) => {
         <Wrapper aria-label="Article card" tabIndex='0'>
             <Image src={`https://picsum.photos/id/${imgNum}/560/300`} alt='placeholder' />
             <Title>{articleInfo.title}</Title>
+            
+            {/* Added the replace method to remove the escaped quote on the category of a couple of articles */}
             <Category>{articleInfo.category.replace(/"/g, '')}</Category>
+
         </Wrapper>
     )
 

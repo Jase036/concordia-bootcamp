@@ -57,7 +57,7 @@ export const StoreProvider = ({ children }) => {
     const catArticles = await getArticlesByCategory(category);
     setPaginatedArticles(catArticles);
   }
-   console.log (articles)
+  
 
   return (
     <StoreContext.Provider

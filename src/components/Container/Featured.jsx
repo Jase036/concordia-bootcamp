@@ -13,6 +13,7 @@ const Featured = () => {
                     {featuredArticle?.fields.title}
                 </FeaturedTitle>
                 <FeaturedShort>
+        {/* Quick and dirty code to get an excerpt from the content. Should replace with a split and create the excerpt on word count instead of charcount */}
                 {featuredArticle?.fields.content.substring(0,299) + '...'}
                 </FeaturedShort>
                 <ReadMore>
