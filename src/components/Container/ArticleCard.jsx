@@ -12,7 +12,7 @@ const ArticleCard = ({articleInfo}) => {
         <Wrapper aria-label="Article card" tabIndex='0'>
             <Image src={`https://picsum.photos/id/${imgNum}/560/300`} alt='placeholder' />
             <Title>{articleInfo.title}</Title>
-            <Category>{articleInfo.category}</Category>
+            <Category>{articleInfo.category.replace(/"/g, '')}</Category>
         </Wrapper>
     )
 
@@ -21,6 +21,7 @@ const ArticleCard = ({articleInfo}) => {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #fff;
     max-width: 510px;
     border: 1px solid white;

@@ -4,28 +4,40 @@ import styled from "styled-components";
 
 
 
+
 const Categories = () => {
-    const {articles} = useContext(StoreContext)
+    const {articles, articlesByCategory} = useContext(StoreContext)
     
     //Push all the categories in the articles to an array then filter for unique categories.
     let categories= [];
-    articles.map((article) => categories.push(article.fields.category));
+    articles.map((article) => categories.push(article.fields.category.replace(/"/g, '')));
     let filteredCategoryArray = categories.filter((e, i, s) => s.indexOf(e) === i);
     
     console.log(filteredCategoryArray)
     
+    
     return (
         <>
-            {filteredCategoryArray.map((category, index) => {
-                return (
-                    <CategoryButton key={index}>{category}</CategoryButton>
-                    )
-                })
-            }
+            <Wrapper>
+                <CategoryButton>View All</CategoryButton>
+                {filteredCategoryArray.map((category, index) => {
+                    return (
+                        <CategoryButton key={index} onClick={() =>{articlesByCategory(category)}}>{category}</CategoryButton>
+                        )
+                    })
+                }
+            </Wrapper>
         </>
         
     )
 }
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+`
 
 const CategoryButton = styled.button`
     border:2px solid #c4e6f1;

@@ -19,7 +19,7 @@ const ArticleList = () => {
                 
                 return <ArticleCard key={article.sys.id} articleInfo={article.fields}></ArticleCard>
             }) }
-               
+            
             </Wrapper>
             <ButtonWrapper><PaginationButton onClick={handleLoadMore}>Load More</PaginationButton></ButtonWrapper> 
         </>

@@ -39,12 +39,24 @@ export const getFeaturedArticles = async () => {
   }
 };
 
+//Grab the articles by category
+export const getArticlesByCategory = async (category) => {
+  
+  //Added the [match] operator to the query so that it will retrieve the entries that had the escaped quotes in the category.
+  const FEATURED_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/6fmuqje9nkz0/environments/master/entries?access_token=yNcU-W6qITUmC18PRtK6Gyy32Vy7oGLRAWzW-2zyUaM&content_type=blog-entry&fields.category[match]="${category}"`;
+  try {
+    const response = await request(GET, FEATURED_CONTENTFUL_URL);
+    
+    return response.items;
+    
+  } catch (e) {
+    console.log("getAllArticles failed:", e);
+  }
+};
+
 // TODO: Using the category argument, update the method below by making a GET
 //       request and returning entries from contentful filtered by the category.
 //       NOTE: this method will need to be connected to ../contexts/Store!
-export const getArticlesByCategory = async (category) => {
-  return [];
-};
 
 // Possibly useful documentation:
 // - https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters

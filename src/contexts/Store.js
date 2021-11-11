@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAllArticles, getPaginatedArticles, getFeaturedArticles} from "../services/contentful";
+import { getAllArticles, getPaginatedArticles, getFeaturedArticles, getArticlesByCategory} from "../services/contentful";
 
 export const StoreContext = React.createContext();
 
@@ -53,11 +53,15 @@ export const StoreProvider = ({ children }) => {
     })();
   }, []);
 
+  const articlesByCategory = async (category) => {
+    const catArticles = await getArticlesByCategory(category);
+    setPaginatedArticles(catArticles);
+  }
+   console.log (articles)
 
-  // TODO: Update the method below to return the latest featured article from the list of articles
   return (
     <StoreContext.Provider
-      value={{ featuredArticle, articles, paginationIndex, setPaginationIndex, paginatedArticles }}
+      value={{ featuredArticle, articles, paginationIndex, setPaginationIndex, paginatedArticles, articlesByCategory}}
     >
       {children}
     </StoreContext.Provider>
